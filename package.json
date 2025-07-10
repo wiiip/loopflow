@@ -6,7 +6,8 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "rimraf node_modules */**/node_modules"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",
@@ -25,5 +26,8 @@
       "protobufjs",
       "sharp"
     ]
+  },
+  "dependencies": {
+    "rimraf": "^6.0.1"
   }
 }
