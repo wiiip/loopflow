@@ -1,3 +1,15 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - apps/*
+  - packages/*
+
+ignoredBuiltDependencies:
+  - '@swc/core'
+  - '@tailwindcss/oxide'
+  - core-js-pure
+  - esbuild
+  - protobufjs
+  - sharp
+  - unrs-resolver
+
+onlyBuiltDependencies:
+  - supabase

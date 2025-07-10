@@ -7,7 +7,9 @@
       "Bash(pnpm lint:*)",
       "Bash(pnpm --filter @loopflow/database lint)",
       "Bash(npx tsc:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(pnpm approve-builds:*)",
+      "Bash(pnpm supabase:*)"
     ],
     "deny": []
   }
