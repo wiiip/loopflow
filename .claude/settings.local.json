@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm type-check:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm --filter @loopflow/database lint)",
+      "Bash(npx tsc:*)",
+      "Bash(rm:*)"
+    ],
+    "deny": []
+  }
+}

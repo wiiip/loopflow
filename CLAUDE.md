@@ -14,6 +14,7 @@ This is a monorepo using pnpm workspaces and Turbo for build orchestration. The 
 
 ### Shared Packages
 - `packages/ui/` - Shared UI components using shadcn/ui, Radix UI, and Tailwind CSS
+- `packages/database/` - Shared Supabase database client and TypeScript types
 - `packages/eslint-config/` - Shared ESLint configurations
 - `packages/typescript-config/` - Shared TypeScript configurations
 
@@ -125,6 +126,12 @@ pnpm start-stdio
 - Components use class-variance-authority for variant handling
 - Includes utility functions and consistent theming
 
+### Shared Database System
+- Central `@loopflow/database` package provides type-safe database access
+- Exports TypeScript types auto-generated from Supabase schema
+- Provides separate client functions for browser and server environments
+- Includes helper types for common database operations
+
 ## Key Technologies
 
 - **Framework**: Next.js 15 with Turbopack
@@ -157,10 +164,56 @@ pnpm dlx shadcn@latest add button -c packages/ui
 pnpm dlx shadcn@latest add button -c apps/web
 ```
 
+## Using the Database Package
+
+The `@loopflow/database` package provides type-safe Supabase clients for different environments:
+
+### In Client Components (browser environment):
+```typescript
+'use client'
+import { createClient } from '@loopflow/database'
+
+const supabase = createClient()
+// Use for client-side operations, real-time subscriptions
+```
+
+### In Server Components (server environment):
+```typescript
+import { createServerClient } from '@loopflow/database'
+
+const supabase = createServerClient()
+// Use for server-side rendering, API routes
+```
+
+### With TypeScript Types:
+```typescript
+import { 
+  WorkflowRun, 
+  WorkflowRunInsert, 
+  WorkflowRunUpdate 
+} from '@loopflow/database'
+
+// Fully typed database operations
+const newRun: WorkflowRunInsert = {
+  user_id: '123',
+  workflow_id: 'abc',
+  status: 'running',
+  input_data: {}
+}
+```
+
+### Generating Database Types:
+```bash
+# Generate TypeScript types from your Supabase schema
+cd packages/database
+pnpm generate-types
+```
+
 ## Environment Setup
 
 - Node.js 20+ required
 - pnpm 10.13.1+ as package manager
-- Supabase environment variables needed for frontend app:
-  - `NEXT_PUBLIC_SUPABASE_URL`
-  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- Supabase environment variables needed for all apps using the database package:
+  - `NEXT_PUBLIC_SUPABASE_URL` - Your Supabase project URL
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Your Supabase anonymous key
+- Supabase CLI for type generation (installed as dev dependency in database package)
