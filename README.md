@@ -1,5 +1,7 @@
 # LoopFlow Monorepo
 
+> WIP 🚧
+
 A modern monorepo featuring Next.js applications with AI capabilities, shared UI components, and Supabase integration.
 
 ## Overview
