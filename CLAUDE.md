@@ -35,6 +35,9 @@ pnpm lint
 
 # Format code
 pnpm format
+
+# Clean all node_modules
+pnpm clean
 ```
 
 ### Application-Specific Commands
@@ -157,7 +160,7 @@ pnpm dlx shadcn@latest add button -c apps/web
 ## Environment Setup
 
 - Node.js 20+ required
-- pnpm 10.4.1+ as package manager
+- pnpm 10.13.1+ as package manager
 - Supabase environment variables needed for frontend app:
   - `NEXT_PUBLIC_SUPABASE_URL`
   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
