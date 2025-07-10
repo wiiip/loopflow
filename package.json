@@ -22,9 +22,12 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@swc/core",
       "core-js-pure",
+      "esbuild",
       "protobufjs",
-      "sharp"
+      "sharp",
+      "unrs-resolver"
     ]
   },
   "dependencies": {
